@@ -1,5 +1,5 @@
 // app.js - shared helpers for frontend pages
-const API_BASE = "https://dmdecode-worker.onrender.com"; // change if backend hosted elsewhere
+const API_BASE = "https://dmdecode.onrender.com"; // change if backend hosted elsewhere
 
 function setToken(token){
   localStorage.setItem("dd_token", token);
