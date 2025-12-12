@@ -21,7 +21,7 @@
 
         <div style="display:flex; gap:8px; justify-content:center;">
           <button type="submit">Register</button>
-          <a href="login.html" class="small" style="margin-left:8px; align-self:center">Back to login</a>
+          <a href="index.html" class="small" style="margin-left:8px; align-self:center">Back to login</a>
         </div>
       </form>
 
@@ -44,7 +44,7 @@
         if(!res.ok){ msg.textContent = data?.message || JSON.stringify(data); return; }
         // If register returns user, you can auto-login or redirect
         msg.textContent = "Registered. Please login.";
-        setTimeout(()=> window.location.href='login.html', 1200);
+        setTimeout(()=> window.location.href='index.html', 1200);
       }catch(err){
         msg.textContent = 'Network error';
       }
