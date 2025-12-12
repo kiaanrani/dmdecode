@@ -1,0 +1,77 @@
+:root{
+  --bg:#f3f4f6;
+  --card:#fff;
+  --muted:#6b7280;
+  --accent:#4f46e5;
+  --success:#10b981;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{
+  max-width:980px;
+  margin:36px auto;
+  padding:20px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(15,23,42,0.06);
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+}
+.brand{font-weight:700; font-size:20px; color:var(--accent)}
+.actions a{color:var(--accent); text-decoration:none; margin-left:8px}
+
+.form-row{display:flex; gap:10px; margin-bottom:12px}
+.input, textarea, select, button{
+  font-size:15px;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #e6e6e6;
+}
+.input, textarea, select{flex:1}
+textarea{min-height:110px; resize:vertical}
+
+button{
+  background:var(--accent);
+  color:white;
+  border:none;
+  cursor:pointer;
+  padding:10px 14px;
+  border-radius:8px;
+}
+button.secondary{background:#64748b}
+.small{font-size:13px; color:var(--muted)}
+
+.list{display:flex; flex-direction:column; gap:12px}
+.item{padding:12px; border-radius:8px; background:#f8fafc; display:flex; justify-content:space-between; gap:12px; align-items:center}
+.item .meta{font-size:13px; color:var(--muted)}
+
+.badge{background:var(--accent); color:white; padding:6px 10px; border-radius:999px; font-size:13px}
+
+.top-row{display:flex; gap:12px; align-items:center; margin-bottom:12px}
+.left{flex:1}
+.right{display:flex; gap:8px; align-items:center}
+
+.notice{background:#fff7ed; border-left:4px solid #f59e0b; padding:10px; border-radius:8px; color:#92400e; font-size:14px}
+
+.footer{margin-top:18px; color:var(--muted); font-size:13px}
+.center{text-align:center}

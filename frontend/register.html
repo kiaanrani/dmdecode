@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Register — DreamDecoder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="card center">
+      <div class="brand">DreamDecoder</div>
+      <h2>Create account</h2>
+
+      <form id="regForm">
+        <div class="form-row">
+          <input id="email" class="input" placeholder="Email" required />
+        </div>
+        <div class="form-row">
+          <input id="password" class="input" type="password" placeholder="Password" required />
+        </div>
+
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button type="submit">Register</button>
+          <a href="login.html" class="small" style="margin-left:8px; align-self:center">Back to login</a>
+        </div>
+      </form>
+
+      <p id="msg" class="small"></p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    document.getElementById('regForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const msg = document.getElementById('msg'); msg.textContent = '';
+      try{
+        const res = await fetch(`${API_BASE}/auth/register`, {
+          method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if(!res.ok){ msg.textContent = data?.message || JSON.stringify(data); return; }
+        // If register returns user, you can auto-login or redirect
+        msg.textContent = "Registered. Please login.";
+        setTimeout(()=> window.location.href='login.html', 1200);
+      }catch(err){
+        msg.textContent = 'Network error';
+      }
+    });
+  </script>
+</body>
+</html>

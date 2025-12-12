@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Dashboard — DreamDecoder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="card header">
+      <div>
+        <div class="brand">DreamDecoder</div>
+        <div class="small">Your sleep & dream insights</div>
+      </div>
+      <div class="actions right">
+        <a href="sleep.html">Sleep</a>
+        <a href="dreams.html">Dreams</a>
+        <a id="logoutLink" style="cursor:pointer">Logout</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Welcome</h3>
+      <p class="small">Quick actions</p>
+      <div class="top-row">
+        <div class="left">
+          <button onclick="location.href='sleep.html'">Add Sleep Session</button>
+          <button onclick="location.href='dreams.html'">Add Dream</button>
+        </div>
+        <div class="right">
+          <div class="badge" id="totalDreams">--</div>
+          <div class="small">Dreams processed</div>
+        </div>
+      </div>
+
+      <div id="summary" class="small">Loading...</div>
+    </div>
+
+    <div class="footer center">Built with ❤️ — DreamDecoder</div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    (async function init(){
+      const token = getToken();
+      if(!token) return window.location.href='login.html';
+      document.getElementById('logoutLink').addEventListener('click', ()=>{
+        clearToken(); localStorage.removeItem('dd_userId'); window.location='login.html';
+      });
+
+      try{
+        // fetch dreams count
+        const res = await apiFetch('/dreams?limit=1'); // fetch first page
+        let total = 0;
+        if(Array.isArray(res)) total = res.length;
+        // better: call endpoint for stats if available; here use quick approach
+        document.getElementById('totalDreams').textContent = total;
+        document.getElementById('summary').textContent = "Open Dreams page to add & view interpretations.";
+      }catch(e){
+        document.getElementById('summary').textContent = "Could not fetch data. Make sure backend is running.";
+      }
+    })();
+  </script>
+</body>
+</html>
