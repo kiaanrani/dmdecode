@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "worker": "nodemon src/workers/dreamWorker.js",
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@prisma/client": "^5.16.2",
+    "bcrypt": "^6.0.0",
+    "bullmq": "^5.65.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "groq-sdk": "^0.37.0",
+    "ioredis": "^5.8.2",
+    "jsonwebtoken": "^9.0.3",
+    "node-fetch": "^3.3.2",
+    "prisma": "^5.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11",
+    "typescript": "^5.9.3"
+  }
+}
