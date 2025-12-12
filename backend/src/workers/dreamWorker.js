@@ -2,6 +2,10 @@ import { Worker } from "bullmq";
 import { prisma } from "../config/prisma.js";
 import Groq from "groq-sdk";
 import dotenv from "dotenv";
+// 🚀 Dummy Express server to satisfy Render port requirements
+import express from "express";
+const app = express();
+
 
 dotenv.config();
 
@@ -124,6 +128,11 @@ w.on("failed", (job, err) => {
 
 w.on("error", (err) => {
   console.error("❌ Worker Error:", err);
+});
+const port = process.env.PORT || 10000;
+app.get("/", (req, res) => res.send("Worker running"));
+app.listen(port, () => {
+  console.log("Worker dummy server listening on port", port);
 });
 
 export default w;
